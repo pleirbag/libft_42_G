@@ -6,7 +6,7 @@
 /*   By: gabpicci <gabpicci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 22:33:16 by gabpicci          #+#    #+#             */
-/*   Updated: 2023/04/18 19:18:09 by gabpicci         ###   ########.fr       */
+/*   Updated: 2023/04/19 21:26:31 by gabpicci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,10 @@ char	*ft_strdup(const char *s)
 	int		i;
 
 	i = 0;
-	size = 0;
-	while (s[size])
-		size++;
-	dupe = malloc(sizeof(char) * size);
-	if (dupe)
-	{
-		while (s)
-		{
-			dupe[i] = s[i];
-			i++;
-		}
-		return (dupe);
-	}
-	return (0);
+	size = ft_strlen(s);
+	dupe = malloc(sizeof(char) * (size + 1));
+	if (dupe == NULL)
+		return (0);
+	ft_memcpy(dupe, s, ft_strlen(s) + 1);
+	return (dupe);
 }

@@ -6,21 +6,19 @@
 /*   By: gabpicci <gabpicci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 22:11:02 by gabpicci          #+#    #+#             */
-/*   Updated: 2023/04/18 19:16:42 by gabpicci         ###   ########.fr       */
+/*   Updated: 2023/04/23 23:36:09 by gabpicci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*strnstr(const char *str, const char *find, size_t len)
+char	*ft_strnstr(const char *str, const char *find, size_t len)
 {
 	size_t	i;
 	size_t	b;
 
 	i = 0;
 	b = 0;
-	if (!str)
-		return (NULL);
 	if (*find == 0)
 		return ((char *)&str[0]);
 	while (str[i] && i < len)
@@ -36,5 +34,5 @@ char	*strnstr(const char *str, const char *find, size_t len)
 		}
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

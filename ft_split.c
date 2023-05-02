@@ -6,7 +6,7 @@
 /*   By: gabpicci <gabpicci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 23:00:12 by gabpicci          #+#    #+#             */
-/*   Updated: 2023/04/18 19:40:50 by gabpicci         ###   ########.fr       */
+/*   Updated: 2023/04/20 21:21:52 by gabpicci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,38 +18,30 @@ int	nbr_str(char const *s, char c)
 	int	i;
 
 	sz = 0;
-	i = 0;
-	while (s[i])
+	i = -1;
+	while (s[++i])
 	{
-		if (s[i] != c)
-			i++;
-		if (s[i] == c)
-		{
+		if ((s[i] != c) && (s[i + 1] == c || s[i + 1] == 0))
 			sz++;
-			i++;
-		}
 	}
 	return (sz);
 }
 
-char	*str_mkr(char const *s, char c, int i)
+char	*str_mkr(char const *s, char c, char *new_str)
 {
-	int		b;
-	char	*str;
+	int		i;
 
-	b = i;
-	while (s[b] != c && s[b])
-		b++;
-	str = malloc(sizeof(char) * b + 1);
-	if (str == NULL)
-	{
+	i = 0;
+	while (s[i] != c && s[i])
+		i++;
+	new_str = malloc(sizeof(char) * i + 1);
+	if (new_str == NULL)
 		return (NULL);
-	}
-	b = i - 1;
-	while (s[++b] && s[b] != c)
-		str[b - i] = s[b];
-	str[b] = 0;
-	return (str);
+	i = -1;
+	while (s[++i] && s[i] != c)
+		new_str[i] = s[i];
+	new_str[i] = 0;
+	return (new_str);
 }
 
 char	**ft_split(char const *s, char c)
@@ -69,7 +61,8 @@ char	**ft_split(char const *s, char c)
 	{
 		if (s[i] != c)
 		{
-			matrix[ii++] = str_mkr(s, c, i);
+			matrix[ii] = str_mkr(&s[i], c, matrix[ii]);
+			ii++;
 			while (s[i] && s[i] != c)
 				i++;
 		}

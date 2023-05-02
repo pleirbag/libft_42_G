@@ -6,9 +6,12 @@
 /*   By: gabpicci <gabpicci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 22:13:57 by gabpicci          #+#    #+#             */
-/*   Updated: 2023/04/18 18:32:27 by gabpicci         ###   ########.fr       */
+/*   Updated: 2023/04/22 19:28:26 by gabpicci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+#include <string.h>
 
 int	ft_atoi(const char *str)
 {
@@ -17,9 +20,9 @@ int	ft_atoi(const char *str)
 	int	nbr;
 
 	i = 0;
-	pos = 0;
+	pos = 1;
 	nbr = 0;
-	while ((str[i] != '-' || str[i] != '+') || !(str[i] >= 48 && str[i] <= 57))
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
@@ -35,3 +38,12 @@ int	ft_atoi(const char *str)
 	}
 	return (nbr * pos);
 }
+
+// int main(int ac, char **av)
+// {
+// 	if (ac == 2)
+// 	{
+// 		printf("ft: %d\n", ft_atoi(av[1]));
+// 		printf("ft: %d\n", atoi(av[1]));
+// 	}
+// }

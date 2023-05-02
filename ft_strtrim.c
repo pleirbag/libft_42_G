@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabpicci <gabpicci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 20:09:05 by gabpicci          #+#    #+#             */
-/*   Updated: 2023/04/18 20:22:25 by gabpicci         ###   ########.fr       */
+/*   Created: 2023/04/22 23:36:35 by gabpicci          #+#    #+#             */
+/*   Updated: 2023/04/22 23:46:59 by gabpicci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,20 @@
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
-	char	*new;
-	size_t	start;
-	size_t	end;
+	char	*nstr;
+	size_t	nstart;
+	size_t	nend;
 
 	i = 0;
 	if (!s1)
 		return (NULL);
-	while (s1[i] && ft_strchr(set, s1[i]))
+	while (s1 && ft_strchr(set, s1[i]))
 		i++;
-	start = i;
+	nstart = i;
 	i = ft_strlen(s1);
-	while (i > start && ft_strchr(set, s1[i - 1]))
+	while (i > nstart && ft_strchr(set, s1[i - 1]))
 		i--;
-	end = i;
-	new = ft_substr(s1, start, end - start);
-	return (new);
-}
-
-int main()
-{
-	char *j = "ababababababababababaaaabbb";
-	char *s = "a";
-
-	printf("%s", ft_strtrim(j, s));
+	nend = i;
+	nstr = ft_substr(s1, nstart, nend - nstart);
+	return (nstr);
 }

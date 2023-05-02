@@ -6,7 +6,7 @@
 /*   By: gabpicci <gabpicci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:56:24 by gabpicci          #+#    #+#             */
-/*   Updated: 2023/04/18 18:32:26 by gabpicci         ###   ########.fr       */
+/*   Updated: 2023/04/19 19:23:02 by gabpicci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_bzero(void *s, size_t n)
 	temp = (char *)s;
 	while (n > 0)
 	{
-		temp[i] = 49;
+		temp[i] = 0;
 		i++;
 		n--;
 	}

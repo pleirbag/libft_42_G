@@ -6,13 +6,15 @@
 /*   By: gabpicci <gabpicci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 21:21:47 by gabpicci          #+#    #+#             */
-/*   Updated: 2023/04/18 19:39:17 by gabpicci         ###   ########.fr       */
+/*   Updated: 2023/04/19 19:22:05 by gabpicci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *str)
+#include "libft.h"
+
+size_t	ft_strlen(const char *str)
 {
-	int	e;
+	size_t	e;
 
 	e = 0;
 	while (str[e])

@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabpicci <gabpicci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 21:59:47 by gabpicci          #+#    #+#             */
-/*   Updated: 2023/04/19 21:58:27 by gabpicci         ###   ########.fr       */
+/*   Created: 2023/04/25 20:19:09 by gabpicci          #+#    #+#             */
+/*   Updated: 2023/04/25 21:27:10 by gabpicci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, const char *src, size_t size)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	size_t	i;
-	size_t	a;
+	t_list	*i;
 
-	i = ft_strlen(dest);
-	a = 0;
-	if (size <= i || size == 0)
-		return (ft_strlen(src) + size);
-	while (i + 1 < size && src[a])
-		dest[i++] = src[a++];
-	dest[i] = 0;
-	return (i + ft_strlen(&src[a]));
+	i = *lst;
+	if (!*lst)
+		*lst = new;
+	else
+	{
+		while (i->next)
+			i = i->next;
+		i->next = new;
+	}
 }
+
+/*lst: The address of a pointer to the first link of
+a list.*/
+/*new: The address of a pointer to the node to be
+added to the list.*/

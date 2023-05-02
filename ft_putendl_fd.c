@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_putsendl.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabpicci <gabpicci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 21:59:47 by gabpicci          #+#    #+#             */
-/*   Updated: 2023/04/19 21:58:27 by gabpicci         ###   ########.fr       */
+/*   Created: 2023/04/23 22:56:03 by gabpicci          #+#    #+#             */
+/*   Updated: 2023/04/23 23:33:34 by gabpicci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, const char *src, size_t size)
+void	ft_putendl_fd(char *s, int fd)
 {
-	size_t	i;
-	size_t	a;
-
-	i = ft_strlen(dest);
-	a = 0;
-	if (size <= i || size == 0)
-		return (ft_strlen(src) + size);
-	while (i + 1 < size && src[a])
-		dest[i++] = src[a++];
-	dest[i] = 0;
-	return (i + ft_strlen(&src[a]));
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd(10, fd);
 }

@@ -6,7 +6,7 @@
 /*   By: gabpicci <gabpicci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 19:42:11 by gabpicci          #+#    #+#             */
-/*   Updated: 2023/04/18 20:21:07 by gabpicci         ###   ########.fr       */
+/*   Updated: 2023/04/19 22:25:51 by gabpicci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,12 @@ char	*ft_strrchr(const char *str, int c)
 
 	i = 0;
 	while (str[i])
-	{
 		i++;
-	}
-	while (i-- >= 0)
+	while (i >= 0)
 	{
-		if (c == str[i])
-		{
+		if ((char)c == str[i])
 			return ((char *)str + i);
-		}
+		i--;
 	}
 	return (NULL);
 }

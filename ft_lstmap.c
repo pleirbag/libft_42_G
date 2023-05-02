@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabpicci <gabpicci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 21:59:47 by gabpicci          #+#    #+#             */
-/*   Updated: 2023/04/19 21:58:27 by gabpicci         ###   ########.fr       */
+/*   Created: 2023/04/25 21:15:06 by gabpicci          #+#    #+#             */
+/*   Updated: 2023/04/25 21:21:53 by gabpicci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, const char *src, size_t size)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	i;
-	size_t	a;
+	t_list	*new;
+	t_list	*current;
 
-	i = ft_strlen(dest);
-	a = 0;
-	if (size <= i || size == 0)
-		return (ft_strlen(src) + size);
-	while (i + 1 < size && src[a])
-		dest[i++] = src[a++];
-	dest[i] = 0;
-	return (i + ft_strlen(&src[a]));
+	if (lst == NULL)
+		return (NULL);
+	new = NULL;
+	while (lst != NULL)
+	{
+		current = ft_lstnew(f(lst->content));
+		if (!current)
+		{
+			ft_lstclear(&new, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new, current);
+		lst = lst->next;
+	}
+	return (new);
 }

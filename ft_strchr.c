@@ -6,7 +6,7 @@
 /*   By: gabpicci <gabpicci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 22:11:07 by gabpicci          #+#    #+#             */
-/*   Updated: 2023/04/18 18:32:54 by gabpicci         ###   ########.fr       */
+/*   Updated: 2023/04/23 23:27:51 by gabpicci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,18 @@
 
 char	*ft_strchr(const char *str, int c)
 {
-	while (c != *str)
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		str++;
-		if (!str)
-		{
-			return (NULL);
-		}
+		if (str[i] == (char)c)
+			return ((char *)&str[i]);
+		i++;
 	}
-	return ((char *)str);
+	if (str[i] == ((char)c))
+		return ((char *)&str[i]);
+	return (NULL);
 }
 
 // int main () {
@@ -33,6 +36,5 @@ char	*ft_strchr(const char *str, int c)
 //    ret = ft_strchr(str, ch);
 
 //    printf("String after |%c| is - |%s|\n", ch, ret);
-   
 //    return(0);
 // }
